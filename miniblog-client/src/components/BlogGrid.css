@@ -1,0 +1,25 @@
+.blog-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 16px;
+}
+
+/* Feed container */
+.feed-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 20px 10px;
+}
+
+.article-container {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    background: gray;
+    border-radius: 5px;
+}
+.avatar-author {
+    display: flex;
+    gap: 10px;
+}
