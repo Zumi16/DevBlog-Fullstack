@@ -1,15 +1,18 @@
 import './Header.css'
 
-export function Header() {
+interface HeaderProps {
+    setSignUpOpen: (open: boolean) => void
+}
+
+export function Header({setSignUpOpen}: HeaderProps) {
     return (
         <div className='header-container'>
             <div className="left-section">
-                <h3>DevBLog</h3>
+                <h3 className='logo'>DevBLog</h3>
             </div>
             <div className="right-section">
-                <button>Feed</button>
-                <button>Sign In</button>
-                <p>Post count</p>
+                <button className='feed-btn'>Feed</button>
+                <button className='sign-up-btn' onClick={() => setSignUpOpen(true)}>Sign Up</button>
             </div>
         </div>
     )

@@ -1,6 +1,13 @@
 import './BlogGrid.css'
+import { Modal
 
-export function BlogGrid() {
+ } from './Modal';
+interface BlogGridProps {
+    signUpOpen: boolean;
+    setSignUpOpen: (open: boolean) => void
+}
+
+export function BlogGrid({signUpOpen, setSignUpOpen}: BlogGridProps) {
     return (
         <div className="blog-grid">
             <div>
@@ -10,7 +17,7 @@ export function BlogGrid() {
                 <article className='article-container'>
                     <div className='avatar-author'>
                         <p>Image</p>
-                        <p>Name</p>
+                        <p>Username</p>
                     </div>
                     <div className='title-content'>
                         <h3>Title</h3>
@@ -20,7 +27,7 @@ export function BlogGrid() {
                 <article className='article-container'>
                     <div className='avatar-author'>
                         <p>Image</p>
-                        <p>Name</p>
+                        <p>Username</p>
                     </div>
                     <div className='title-content'>
                         <h3>Title</h3>
@@ -30,7 +37,7 @@ export function BlogGrid() {
                 <article className='article-container'>
                     <div className='avatar-author'>
                         <p>Image</p>
-                        <p>Name</p>
+                        <p>Username</p>
                     </div>
                     <div className='title-content'>
                         <h3>Title</h3>
@@ -40,7 +47,7 @@ export function BlogGrid() {
                                 <article className='article-container'>
                     <div className='avatar-author'>
                         <p>Image</p>
-                        <p>Name</p>
+                        <p>Username</p>
                     </div>
                     <div className='title-content'>
                         <h3>Title</h3>
@@ -50,7 +57,7 @@ export function BlogGrid() {
                                 <article className='article-container'>
                     <div className='avatar-author'>
                         <p>Image</p>
-                        <p>Name</p>
+                        <p>Username</p>
                     </div>
                     <div className='title-content'>
                         <h3>Title</h3>
@@ -60,7 +67,7 @@ export function BlogGrid() {
                                 <article className='article-container'>
                     <div className='avatar-author'>
                         <p>Image</p>
-                        <p>Name</p>
+                        <p>Username</p>
                     </div>
                     <div className='title-content'>
                         <h3>Title</h3>
@@ -75,6 +82,10 @@ export function BlogGrid() {
                     <h5>Article 3</h5>
                 </div>
             </div>
+            { signUpOpen && (
+                <Modal setSignUpOpen={setSignUpOpen}/>
+            )
+            }
         </div>
     )
 }

@@ -3,7 +3,7 @@
     grid-template-columns: 1fr 2fr 1fr;
     gap: 16px;
     padding: 20px 10px;
-    height: 93%;
+    height: 92%;
 }
 
 /* middle container */
@@ -41,14 +41,12 @@
 
 /* scrollbar */
 .middle-container::-webkit-scrollbar {
-  width: 8px;
+  width: 12px;
 }
-.middle-container::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
+
 .middle-container::-webkit-scrollbar-thumb {
   background: #dfdfdf;
-  border: 3px solid #f1f1f1;
+  border-radius: 10px;
 }
 .middle-container::-webkit-scrollbar-thumb:hover {
   background: #555555;

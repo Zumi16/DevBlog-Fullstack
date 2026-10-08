@@ -2,11 +2,21 @@
     display: flex;
     padding: 10px;
     justify-content: space-around;
-    background: gray;
+    background: #2a2a2a;
 }
-
 .right-section {
     display: flex;
-    gap: 10px;
+    gap: 30px;
     justify-content: space-between;
+}
+.logo {
+    color: white;
+}
+.feed-btn {
+    color: white;
+}
+.sign-up-btn {
+    background: white;
+    padding: 8px 20px;
+    border-radius: 50px;
 }
