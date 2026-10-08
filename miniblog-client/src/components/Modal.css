@@ -13,11 +13,27 @@
 .modal-container {
     position: relative;
     background: white;
-    padding: 5px;
-    border-radius: 10px;
-    max-width: 700px;
-    width: 100%;
+    padding: 30px 48px;
+    border-radius: 5px;
     max-height: 85vh;
     overflow: auto;
     clip-path: inset(0 round 10px);
+}
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+}
+/* Modal Content Sign-Up */
+.signup-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.signup-container input {
+    max-width: 200px;
+    padding: 5px 12px;
 }

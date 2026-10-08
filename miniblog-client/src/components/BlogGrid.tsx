@@ -1,13 +1,15 @@
+import type { Dispatch, SetStateAction } from 'react';
 import './BlogGrid.css'
 import { Modal
 
  } from './Modal';
 interface BlogGridProps {
     signUpOpen: boolean;
-    setSignUpOpen: (open: boolean) => void
+    setSignUpOpen: Dispatch<SetStateAction<boolean>>;
+    setUserName: Dispatch<SetStateAction<string[]>>;
 }
 
-export function BlogGrid({signUpOpen, setSignUpOpen}: BlogGridProps) {
+export function BlogGrid({signUpOpen, setSignUpOpen, setUserName}: BlogGridProps) {
     return (
         <div className="blog-grid">
             <div>
@@ -83,7 +85,10 @@ export function BlogGrid({signUpOpen, setSignUpOpen}: BlogGridProps) {
                 </div>
             </div>
             { signUpOpen && (
-                <Modal setSignUpOpen={setSignUpOpen}/>
+                <Modal 
+                    setSignUpOpen={setSignUpOpen}
+                    setUserName={setUserName}
+                />
             )
             }
         </div>
