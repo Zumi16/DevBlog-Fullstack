@@ -1,8 +1,8 @@
 import { DatabaseSync } from 'node:sqlite'
-const db = DatabaseSync(':memory:')
+const db = new DatabaseSync(':memory:')
 
 db.exec(`
-    CREATE TABLE user (
+    CREATE TABLE users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         username TEXT UNIQUE,
         password TEXT 
@@ -14,9 +14,9 @@ db.exec(`
         id INTEGER PRIMARY KEY,
         user_id INTEGER,
         content TEXT, 
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY(user_id) REFERENCES users(id)
     )
-    `)
+`)
 
     export default db;
