@@ -4,7 +4,11 @@ import db from '../db.js'
 const router = express.Router();
 
 // Get all posts of logged user
-router.get('/', (req, res) => { })
+router.get('/', (req, res) => { 
+    const getPosts = db.prepare('SELECT * FROM blog_post where user_id = ?')
+    const posts = getPosts.all(req.userId) 
+    res.json(posts)
+ })
 
 // Create a new post
 router.post('/', (req, res) => { })
