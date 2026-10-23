@@ -12,7 +12,7 @@ interface ModalProps {
 export function Modal({ setModalOpen, setUserName, signUpOpen, setSignUpOpen }: ModalProps) {
     const usernameRef = useRef<HTMLInputElement>(null)
     return (
-        <div className="modal-overlay" onClick={() => setModalOpen(false)}>
+        <div className="modal-overlay" onClick={() => (setModalOpen(false), setSignUpOpen(false))}>
             <div className="modal-container" onClick={(e) => e.stopPropagation()}>
                 <button className='close-btn' onClick={() => (setModalOpen(false), setSignUpOpen(false))}>Close</button>
                 {/* Either SignUp or Login */}
