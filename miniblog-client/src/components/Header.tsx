@@ -1,10 +1,10 @@
 import './Header.css'
 
 interface HeaderProps {
-    setSignUpOpen: (open: boolean) => void
+    setModalOpen: (open: boolean) => void
 }
 
-export function Header({setSignUpOpen}: HeaderProps) {
+export function Header({setModalOpen}: HeaderProps) {
     return (
         <div className='header-container'>
             <div className="left-section">
@@ -12,7 +12,7 @@ export function Header({setSignUpOpen}: HeaderProps) {
             </div>
             <div className="right-section">
                 <button className='feed-btn'>Feed</button>
-                <button className='sign-up-btn' onClick={() => setSignUpOpen(true)}>Sign Up</button>
+                <button className='sign-up-btn' onClick={() => setModalOpen(true)}>Sign Up</button>
             </div>
         </div>
     )

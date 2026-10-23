@@ -4,12 +4,12 @@ import { Modal
 
  } from './Modal';
 interface BlogGridProps {
-    signUpOpen: boolean;
-    setSignUpOpen: Dispatch<SetStateAction<boolean>>;
+    modalOpen: boolean;
+    setModalOpen: Dispatch<SetStateAction<boolean>>;
     setUserName: Dispatch<SetStateAction<string[]>>;
 }
 
-export function BlogGrid({signUpOpen, setSignUpOpen, setUserName}: BlogGridProps) {
+export function BlogGrid({modalOpen, setModalOpen, setUserName}: BlogGridProps) {
     return (
         <div className="blog-grid">
             <div>
@@ -84,9 +84,9 @@ export function BlogGrid({signUpOpen, setSignUpOpen, setUserName}: BlogGridProps
                     <h5>Article 3</h5>
                 </div>
             </div>
-            { signUpOpen && (
+            { modalOpen && (
                 <Modal 
-                    setSignUpOpen={setSignUpOpen}
+                    setModalOpen={setModalOpen}
                     setUserName={setUserName}
                 />
             )

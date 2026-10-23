@@ -4,19 +4,23 @@ import { Header } from "../components/Header"
 import "./HomePage.css"
 
 interface HomePageProps {
-    signUpOpen: boolean;
-    setSignUpOpen: Dispatch<SetStateAction<boolean>>;
+    modalOpen: boolean;
+    setModalOpen: Dispatch<SetStateAction<boolean>>;
     setUserName: Dispatch<SetStateAction<string[]>>;
+    signUpOpen: boolean;
+    setSignUpOpen: Dispatch<SetStateAction<boolean>>
 }
 
-export function HomePage({signUpOpen, setSignUpOpen, setUserName}: HomePageProps) {
+export function HomePage({modalOpen, setModalOpen, setUserName, signUpOpen, setSignUpOpen}: HomePageProps) {
     return (
         <div className="homepage-body">
-            <Header setSignUpOpen={setSignUpOpen}/>
+            <Header setModalOpen={setModalOpen}/>
             <BlogGrid 
-                signUpOpen={signUpOpen} 
-                setSignUpOpen={setSignUpOpen} 
+                modalOpen={modalOpen}
+                setModalOpen={setModalOpen} 
                 setUserName={setUserName}
+                signUpOpen={signUpOpen}
+                setSignUpOpen={setSignUpOpen}
             />
         </div>
     )

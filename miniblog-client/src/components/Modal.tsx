@@ -3,16 +3,19 @@ import { useRef } from 'react'
 import './Modal.css'
 
 interface ModalProps {
-    setSignUpOpen: Dispatch<SetStateAction<boolean>>;
+    setModalOpen: Dispatch<SetStateAction<boolean>>;
     setUserName: Dispatch<SetStateAction<string[]>>;
+    signUpOpen: boolean;
+    setSignUpOpen: Dispatch<SetStateAction<boolean>>
 }
 
-export function Modal({ setSignUpOpen, setUserName}: ModalProps) {
+export function Modal({ setModalOpen, setUserName, signUpOpen, setSignUpOpen }: ModalProps) {
     const usernameRef = useRef<HTMLInputElement>(null)
     return (
-        <div className="modal-overlay" onClick={() => setSignUpOpen(false)}>
+        <div className="modal-overlay" onClick={() => setModalOpen(false)}>
             <div className="modal-container" onClick={(e) => e.stopPropagation()}>
-                <button className='close-btn' onClick={() => setSignUpOpen(false)}>Close</button>
+                <button className='close-btn' onClick={() => setModalOpen(false)}>Close</button>
+                {!signUpOpen ? 
                 <div className='signup-container'>
                     <h2>Sign Up</h2>
                     <div>
@@ -23,9 +26,23 @@ export function Modal({ setSignUpOpen, setUserName}: ModalProps) {
                         <p>Password</p>
                         <input type='password' placeholder='enter your password'></input>
                     </div>
-                    <button onClick={() => (setUserName(previousNames => [...previousNames, usernameRef.current?.value ?? ""]), setSignUpOpen(false))}>Create Account</button>
-                    <p>Already have an account?</p>
+                    <button onClick={() => (setUserName(previousNames => [...previousNames, usernameRef.current?.value ?? ""]), setModalOpen(false))}>Create Account</button>
+                    <button>Already have an account?</button>
+                </div> 
+                : <div className='login-container'>
+                    <h2>Log in</h2>
+                    <div>
+                        <p>Username</p>
+                        <input type='text' placeholder='enter your username' ref={usernameRef}></input>
+                    </div>
+                    <div>
+                        <p>Password</p>
+                        <input type='password' placeholder='enter your password'></input>
+                    </div>
+                    <button onClick={() => setModalOpen(false)}>Login</button>
+                    <p>Create an account?</p>
                 </div>
+                }
             </div>
         </div>
     )
