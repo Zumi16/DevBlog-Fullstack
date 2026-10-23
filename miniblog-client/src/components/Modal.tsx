@@ -27,7 +27,7 @@ export function Modal({ setModalOpen, setUserName, signUpOpen, setSignUpOpen }: 
                         <input type='password' placeholder='enter your password'></input>
                     </div>
                     <button onClick={() => (setUserName(previousNames => [...previousNames, usernameRef.current?.value ?? ""]), setModalOpen(false))}>Create Account</button>
-                    <button>Already have an account?</button>
+                    <button onClick={() => setSignUpOpen(true)}>Already have an account?</button>
                 </div> 
                 : <div className='login-container'>
                     <h2>Log in</h2>
@@ -40,7 +40,7 @@ export function Modal({ setModalOpen, setUserName, signUpOpen, setSignUpOpen }: 
                         <input type='password' placeholder='enter your password'></input>
                     </div>
                     <button onClick={() => setModalOpen(false)}>Login</button>
-                    <p>Create an account?</p>
+                    <button onClick={() => setSignUpOpen(false)}>Create an account?</button>
                 </div>
                 }
             </div>
