@@ -14,7 +14,8 @@ export function Modal({ setModalOpen, setUserName, signUpOpen, setSignUpOpen }: 
     return (
         <div className="modal-overlay" onClick={() => setModalOpen(false)}>
             <div className="modal-container" onClick={(e) => e.stopPropagation()}>
-                <button className='close-btn' onClick={() => setModalOpen(false)}>Close</button>
+                <button className='close-btn' onClick={() => (setModalOpen(false), setSignUpOpen(false))}>Close</button>
+                {/* Either SignUp or Login */}
                 {!signUpOpen ? 
                 <div className='signup-container'>
                     <h2>Sign Up</h2>

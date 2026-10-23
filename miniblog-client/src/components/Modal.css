@@ -19,11 +19,13 @@
     overflow: auto;
     clip-path: inset(0 round 10px);
 }
+
 .close-btn {
     position: absolute;
     top: 12px;
     right: 16px;
 }
+
 /* Modal Content Sign-Up */
 .signup-container {
     padding: 20px;
@@ -34,6 +36,18 @@
     align-items: center;
 }
 .signup-container input {
+    max-width: 200px;
+    padding: 5px 12px;
+}
+.login-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.login-container input {
     max-width: 200px;
     padding: 5px 12px;
 }
