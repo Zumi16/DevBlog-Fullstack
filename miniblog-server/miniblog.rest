@@ -18,3 +18,16 @@ Content-Type: application/json
     "username": "zumi",
     "password": "123"
 }
+
+### Fetch all posts GET /POSTS (PROTECTED)
+GET http://localhost:3000/posts
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkyOTI5MTA3LCJleHAiOjE3OTMwMTU1MDd9.Fba6h2weEwbmPRG3eUTHLxNSY6753MD-0UfP0PnmslM
+
+### Creates a new post POST /POSTS
+POST http://localhost:3000/posts
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkyOTI5MTA3LCJleHAiOjE3OTMwMTU1MDd9.Fba6h2weEwbmPRG3eUTHLxNSY6753MD-0UfP0PnmslM
+Content-Type: application/json
+
+{
+    "content": "Hello world from rest"
+}
