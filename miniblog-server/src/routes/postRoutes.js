@@ -11,7 +11,13 @@ router.get('/', (req, res) => {
  })
 
 // Create a new post
-router.post('/', (req, res) => { })
+router.post('/', (req, res) => { 
+    const { task } = req.body
+    const insertTodo = db.prepare(`INSERT INTO blog_posts (user_id, content) VALUES (?, ?)`)
+    insertTodo.run(req.userId, task)
+
+    res.json({ id: insertTodo.lastId, task})
+ })
 
 // Edit a post
 router.put('/:id', (req, res) => { })
