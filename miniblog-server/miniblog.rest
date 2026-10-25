@@ -6,7 +6,7 @@ POST http://localhost:3000/auth/register
 Content-Type: application/json
 
 {
-    "username": "zumi",
+    "username": "zumi5",
     "password": "123"
 }
 
@@ -15,19 +15,28 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "username": "zumi",
+    "username": "zumi5",
     "password": "123"
 }
 
-### Fetch all posts GET /POSTS (PROTECTED)
+### Fetch all posts GET /POSTS (protected)
 GET http://localhost:3000/posts
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkyOTI5MTA3LCJleHAiOjE3OTMwMTU1MDd9.Fba6h2weEwbmPRG3eUTHLxNSY6753MD-0UfP0PnmslM
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkyOTMwNjg2LCJleHAiOjE3OTMwMTcwODZ9.nwkC4RwluLeDnKz7dlQdDuMrm47HXISFknM9qpNNjv8
 
 ### Creates a new post POST /POSTS
 POST http://localhost:3000/posts
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkyOTI5MTA3LCJleHAiOjE3OTMwMTU1MDd9.Fba6h2weEwbmPRG3eUTHLxNSY6753MD-0UfP0PnmslM
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkyOTMwNjg2LCJleHAiOjE3OTMwMTcwODZ9.nwkC4RwluLeDnKz7dlQdDuMrm47HXISFknM9qpNNjv8
 Content-Type: application/json
 
 {
     "content": "Hello world from rest"
+}
+
+### Update a post PUT /POSTS/:ID (protected)
+PUT http://localhost:3000/posts/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkyOTMwNjg2LCJleHAiOjE3OTMwMTcwODZ9.nwkC4RwluLeDnKz7dlQdDuMrm47HXISFknM9qpNNjv8
+Content-Type: application/json
+
+{
+    "content": "Hell no"
 }

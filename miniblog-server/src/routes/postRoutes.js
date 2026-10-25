@@ -16,13 +16,21 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => { 
     const { content } = req.body
     const insertTodo = db.prepare(`INSERT INTO blog_post (user_id, content) VALUES (?, ?)`)
-    insertTodo.run(req.userId, content)
+    const result = insertTodo.run(req.userId, content)
 
-    res.json({ id: insertTodo.lastId, content})
+    res.json({ id: result.lastId, content})
  })
 
 // Edit a post
-router.put('/:id', (req, res) => { })
+router.put('/:id', (req, res) => { 
+    const { content } = req.body
+    const { id } = req.params
+
+    const updatedPost = db.prepare(`UPDATE blog_post SET content = ? WHERE id = ?`)
+    updatedPost.run(content, id)
+
+    res.json({ message: "post edited", content })
+ })
 
 // Delete a post
 router.delete('/:id', (req, res) => { })
