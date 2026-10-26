@@ -33,6 +33,12 @@ router.put('/:id', (req, res) => {
  })
 
 // Delete a post
-router.delete('/:id', (req, res) => { })
+router.delete('/:id', (req, res) => { 
+    const { id } = req.params
+    const { userId } = req.userId
+    const deletePost = db.prepare(`DELETE FROM blog_post where id = ? AND user_id = ?`)
+
+    deletePost.run(id, userId)
+ })
 
 export default router;

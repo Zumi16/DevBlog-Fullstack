@@ -40,3 +40,7 @@ Content-Type: application/json
 {
     "content": "Hell no"
 }
+
+### Delete a post DELETE /POSTS/:ID (protected)
+DELETE http://localhost:3000/posts/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkyOTMwNjg2LCJleHAiOjE3OTMwMTcwODZ9.nwkC4RwluLeDnKz7dlQdDuMrm47HXISFknM9qpNNjv8
