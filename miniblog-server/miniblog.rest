@@ -21,11 +21,11 @@ Content-Type: application/json
 
 ### Fetch all posts GET /POSTS (protected)
 GET http://localhost:3000/posts
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkyOTMwNjg2LCJleHAiOjE3OTMwMTcwODZ9.nwkC4RwluLeDnKz7dlQdDuMrm47HXISFknM9qpNNjv8
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkzMDE1NDg1LCJleHAiOjE3OTMxMDE4ODV9.qq1XY5ce-Ak6-ODLYfzHE-XQdaV_9tfwtWHajb4wr-o
 
 ### Creates a new post POST /POSTS
 POST http://localhost:3000/posts
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkyOTMwNjg2LCJleHAiOjE3OTMwMTcwODZ9.nwkC4RwluLeDnKz7dlQdDuMrm47HXISFknM9qpNNjv8
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkzMDE1NDg1LCJleHAiOjE3OTMxMDE4ODV9.qq1XY5ce-Ak6-ODLYfzHE-XQdaV_9tfwtWHajb4wr-o
 Content-Type: application/json
 
 {
@@ -42,5 +42,5 @@ Content-Type: application/json
 }
 
 ### Delete a post DELETE /POSTS/:ID (protected)
-DELETE http://localhost:3000/posts/2
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkyOTMwNjg2LCJleHAiOjE3OTMwMTcwODZ9.nwkC4RwluLeDnKz7dlQdDuMrm47HXISFknM9qpNNjv8
+DELETE http://localhost:3000/posts/3
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkzMDE1NDg1LCJleHAiOjE3OTMxMDE4ODV9.qq1XY5ce-Ak6-ODLYfzHE-XQdaV_9tfwtWHajb4wr-o
