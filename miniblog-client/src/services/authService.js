@@ -1,1 +1,7 @@
 // REST ACTIONS FOR LOGIN/REGISTER
+
+const API_URL = import.meta.env.VITE_API_URL
+
+async function authenticate() {
+    
+}

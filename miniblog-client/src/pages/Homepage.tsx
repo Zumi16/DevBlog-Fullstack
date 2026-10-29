@@ -6,19 +6,17 @@ import "./HomePage.css"
 interface HomePageProps {
     modalOpen: boolean;
     setModalOpen: Dispatch<SetStateAction<boolean>>;
-    setUserName: Dispatch<SetStateAction<string[]>>;
     signUpOpen: boolean;
     setSignUpOpen: Dispatch<SetStateAction<boolean>>
 }
 
-export function HomePage({modalOpen, setModalOpen, setUserName, signUpOpen, setSignUpOpen}: HomePageProps) {
+export function HomePage({modalOpen, setModalOpen, signUpOpen, setSignUpOpen}: HomePageProps) {
     return (
         <div className="homepage-body">
             <Header setModalOpen={setModalOpen}/>
             <BlogGrid 
                 modalOpen={modalOpen}
                 setModalOpen={setModalOpen} 
-                setUserName={setUserName}
                 signUpOpen={signUpOpen}
                 setSignUpOpen={setSignUpOpen}
             />
