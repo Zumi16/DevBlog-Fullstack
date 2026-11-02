@@ -1,80 +1,64 @@
-import type { Dispatch, SetStateAction } from 'react';
+import { useEffect, useState, type Dispatch, type SetStateAction } from 'react';
 import './BlogGrid.css'
-import { Modal
+import { Modal } from './Modal';
+import { PostService } from '../services/postService.js' // Match the service filename's lowercase casing.
 
- } from './Modal';
 interface BlogGridProps {
     modalOpen: boolean;
     setModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export function BlogGrid({modalOpen, setModalOpen}: BlogGridProps) {
+interface Post {
+    id: string;
+    title: string;
+    content: string;
+    created_at?: string;
+}
+
+export function BlogGrid({ modalOpen, setModalOpen }: BlogGridProps) {
+    const [posts, setPosts] = useState<Post[]>([]);
+
+    const fetchPost = async () => {
+        console.log('fetchPost called');
+
+        try {
+            const data = await PostService.getPost();
+
+            if (data.token) {
+                localStorage.setItem('token', data.token)
+            }
+
+            setPosts(Array.isArray(data) ? data : []);
+        } catch (err) {
+            if (err instanceof Error) {
+                console.log(err.message)
+            }
+        }
+    }
+
+    useEffect(() => {
+        fetchPost();
+    }, [])
+
+    console.log(posts)
     return (
         <div className="blog-grid">
             <div>
-
             </div>
             <div className='middle-container'>
-                <article className='article-container'>
-                    <div className='avatar-author'>
-                        <p>Image</p>
-                        <p>Username</p>
-                    </div>
-                    <div className='title-content'>
-                        <h3>Title</h3>
-                        <p>Content</p>
-                    </div>
-                </article>
-                <article className='article-container'>
-                    <div className='avatar-author'>
-                        <p>Image</p>
-                        <p>Username</p>
-                    </div>
-                    <div className='title-content'>
-                        <h3>Title</h3>
-                        <p>Content</p>
-                    </div>
-                </article>
-                <article className='article-container'>
-                    <div className='avatar-author'>
-                        <p>Image</p>
-                        <p>Username</p>
-                    </div>
-                    <div className='title-content'>
-                        <h3>Title</h3>
-                        <p>Content</p>
-                    </div>
-                </article>
-                                <article className='article-container'>
-                    <div className='avatar-author'>
-                        <p>Image</p>
-                        <p>Username</p>
-                    </div>
-                    <div className='title-content'>
-                        <h3>Title</h3>
-                        <p>Content</p>
-                    </div>
-                </article>
-                                <article className='article-container'>
-                    <div className='avatar-author'>
-                        <p>Image</p>
-                        <p>Username</p>
-                    </div>
-                    <div className='title-content'>
-                        <h3>Title</h3>
-                        <p>Content</p>
-                    </div>
-                </article>
-                                <article className='article-container'>
-                    <div className='avatar-author'>
-                        <p>Image</p>
-                        <p>Username</p>
-                    </div>
-                    <div className='title-content'>
-                        <h3>Title</h3>
-                        <p>Content</p>
-                    </div>
-                </article>
+                {posts.map((post) => (
+                    <article className='article-container'>
+                        <div className='avatar-author'>
+                            <p>Image</p>
+                            <p></p>
+                        </div>
+                        <div className='title-content'>
+                            <p>{post.content}</p>
+                            <p>{post.created_at}</p>
+                        </div>
+                    </article>
+                ))}
+
             </div>
             <div className='right-container'>
                 <div className='recent-articles'>
@@ -83,9 +67,10 @@ export function BlogGrid({modalOpen, setModalOpen}: BlogGridProps) {
                     <h5>Article 3</h5>
                 </div>
             </div>
-            { modalOpen && (
-                <Modal 
+            {modalOpen && (
+                <Modal
                     setModalOpen={setModalOpen}
+                    onLoginSuccess={fetchPost}
                 />
             )
             }

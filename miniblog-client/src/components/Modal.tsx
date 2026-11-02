@@ -5,9 +5,10 @@ import { AuthService } from '../services/authService.js'
 
 interface ModalProps {
     setModalOpen: Dispatch<SetStateAction<boolean>>;
+    onLoginSuccess?: () => void;
 }
 
-export function Modal({ setModalOpen }: ModalProps) {
+export function Modal({ setModalOpen, onLoginSuccess }: ModalProps) {
     const usernameRef = useRef<HTMLInputElement>(null)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -15,8 +16,7 @@ export function Modal({ setModalOpen }: ModalProps) {
     const [error, setError] = useState('')
 
     const token = localStorage.getItem('token')
-    console.log(`Current token: ${token}`)
-
+    console.log(token)
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -29,6 +29,10 @@ export function Modal({ setModalOpen }: ModalProps) {
 
                 if (response.token) {
                     localStorage.setItem('token', response.token)
+                }
+
+                if (onLoginSuccess) {
+                    onLoginSuccess();
                 }
             } catch (err) {
                 if (err instanceof Error) {
@@ -46,6 +50,11 @@ export function Modal({ setModalOpen }: ModalProps) {
 
                 if (response.token) {
                     localStorage.setItem('token', response.token)
+                }
+
+                console.log('About to refresh posts');
+                if (onLoginSuccess) {
+                    onLoginSuccess();
                 }
             } catch (err) {
                 if (err instanceof Error) {

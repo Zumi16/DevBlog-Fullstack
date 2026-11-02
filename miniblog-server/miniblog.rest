@@ -21,11 +21,11 @@ Content-Type: application/json
 
 ### Fetch all posts GET /POSTS (protected)
 GET http://localhost:3000/posts
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkzMDE1NDg1LCJleHAiOjE3OTMxMDE4ODV9.qq1XY5ce-Ak6-ODLYfzHE-XQdaV_9tfwtWHajb4wr-o
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkzNjMwMjg4LCJleHAiOjE3OTM3MTY2ODh9.hbPOw_ALOjy4TfKDUonYKA2YQWNq8GgiEtXQPvz0-gk
 
 ### Creates a new post POST /POSTS
 POST http://localhost:3000/posts
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkzMDE1NDg1LCJleHAiOjE3OTMxMDE4ODV9.qq1XY5ce-Ak6-ODLYfzHE-XQdaV_9tfwtWHajb4wr-o
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkzNjMwMjg4LCJleHAiOjE3OTM3MTY2ODh9.hbPOw_ALOjy4TfKDUonYKA2YQWNq8GgiEtXQPvz0-gk
 Content-Type: application/json
 
 {

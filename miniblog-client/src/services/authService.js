@@ -20,7 +20,9 @@ export const AuthService = {
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify({username: credentials.username, password: credentials.password})
         })
+        
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.message || 'Login failed');
+        return data
     }
 }
-
-export default AuthService;
