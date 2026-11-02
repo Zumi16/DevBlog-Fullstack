@@ -6,11 +6,9 @@ import { Modal
 interface BlogGridProps {
     modalOpen: boolean;
     setModalOpen: Dispatch<SetStateAction<boolean>>;
-    signUpOpen: boolean;
-    setSignUpOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export function BlogGrid({modalOpen, setModalOpen, signUpOpen, setSignUpOpen}: BlogGridProps) {
+export function BlogGrid({modalOpen, setModalOpen}: BlogGridProps) {
     return (
         <div className="blog-grid">
             <div>
@@ -88,8 +86,6 @@ export function BlogGrid({modalOpen, setModalOpen, signUpOpen, setSignUpOpen}: B
             { modalOpen && (
                 <Modal 
                     setModalOpen={setModalOpen}
-                    signUpOpen={signUpOpen}
-                    setSignUpOpen={setSignUpOpen}
                 />
             )
             }
