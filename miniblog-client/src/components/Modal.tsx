@@ -13,7 +13,6 @@ export function Modal({ setModalOpen }: ModalProps) {
     const [password, setPassword] = useState('')
     const [isLogin, setIsLogin] = useState<boolean>(false)
     const [error, setError] = useState('')
-    console.log(error)
 
     const token = localStorage.getItem('token')
     console.log(`Current token: ${token}`)
@@ -34,6 +33,8 @@ export function Modal({ setModalOpen }: ModalProps) {
             } catch (err) {
                 if (err instanceof Error) {
                     setError(err.message)
+
+                    console.log(error)
                 }
             }
         } else {
@@ -49,6 +50,8 @@ export function Modal({ setModalOpen }: ModalProps) {
             } catch (err) {
                 if (err instanceof Error) {
                     setError(err.message)
+
+                    console.log(error)
                 }
             }
         }
