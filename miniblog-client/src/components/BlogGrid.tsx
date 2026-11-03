@@ -1,7 +1,8 @@
 import { useEffect, useState, type Dispatch, type SetStateAction } from 'react';
 import './BlogGrid.css'
-import { Modal } from './Modal';
+import { Modal } from './Modal'
 import { getPost } from '../services/postService.ts' // Match the service filename's lowercase casing.
+import { PostModal } from './PostModal.tsx'
 
 interface BlogGridProps {
     modalOpen: boolean;
@@ -17,6 +18,7 @@ interface Post {
 
 export function BlogGrid({ modalOpen, setModalOpen }: BlogGridProps) {
     const [posts, setPosts] = useState<Post[]>([]);
+    const [postModalOpen, setPostModalOpen] = useState<boolean>(false)
 
     const fetchPost = async () => {
         console.log('fetchPost called');
@@ -47,19 +49,27 @@ export function BlogGrid({ modalOpen, setModalOpen }: BlogGridProps) {
             <div>
             </div>
             <div className='middle-container'>
-                {posts.map((post) => (
-                    <article className='article-container'>
-                        <div className='avatar-author'>
-                            <p>Image</p>
-                            <p></p>
-                        </div>
-                        <div className='title-content'>
-                            <p>{post.content}</p>
-                            <p>{post.created_at}</p>
-                        </div>
-                    </article>
-                ))}
-
+                <div className='create-post'>
+                    <div className='avatar'>1x1</div>
+                    <input className='post-input' placeholder="Care to share your thoughts?" readOnly></input>
+                    <button className='add-image-btn'>icon</button>
+                </div>
+                {/* Posts here */}
+                <div className='post-container'>
+                    {posts.map((post) => (
+                        <article key={post.id} className='article-container'>
+                            <div className='avatar-author'>
+                                <p>Image</p>
+                                <p></p>
+                            </div>
+                            <div className='title-content'>
+                                <p>{post.content}</p>
+                                <p>{post.created_at}</p>
+                            </div>
+                        </article>
+                    ))}
+                </div>
+                {postModalOpen && <PostModal/>}
             </div>
             <div className='right-container'>
                 <div className='recent-articles'>
