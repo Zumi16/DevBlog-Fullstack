@@ -1,7 +1,7 @@
 import { useEffect, useState, type Dispatch, type SetStateAction } from 'react';
 import './BlogGrid.css'
 import { Modal } from './Modal';
-import { PostService } from '../services/postService.js' // Match the service filename's lowercase casing.
+import { getPost } from '../services/postService.ts' // Match the service filename's lowercase casing.
 
 interface BlogGridProps {
     modalOpen: boolean;
@@ -22,7 +22,7 @@ export function BlogGrid({ modalOpen, setModalOpen }: BlogGridProps) {
         console.log('fetchPost called');
 
         try {
-            const data = await PostService.getPost();
+            const data = await getPost();
 
             if (data.token) {
                 localStorage.setItem('token', data.token)

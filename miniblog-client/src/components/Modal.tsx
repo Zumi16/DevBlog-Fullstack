@@ -1,7 +1,7 @@
 import type { Dispatch, SetStateAction } from 'react';
 import { useRef, useState } from 'react';
 import './Modal.css';
-import { AuthService } from '../services/authService.js'
+import { registerUser, loginUser } from '../services/authService.ts'
 
 interface ModalProps {
     setModalOpen: Dispatch<SetStateAction<boolean>>;
@@ -22,7 +22,7 @@ export function Modal({ setModalOpen, onLoginSuccess }: ModalProps) {
 
         if (isLogin) {
             try {
-                const response = await AuthService.login({ username, password })
+                const response = await loginUser({ username, password })
 
                 console.log('Registered Successfully', response)
                 setModalOpen(false)
@@ -43,7 +43,7 @@ export function Modal({ setModalOpen, onLoginSuccess }: ModalProps) {
             }
         } else {
             try {
-                const response = await AuthService.register({ username, password })
+                const response = await registerUser({ username, password })
 
                 console.log('Login Successfully', response)
                 setModalOpen(false)
