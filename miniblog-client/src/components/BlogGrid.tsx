@@ -51,7 +51,7 @@ export function BlogGrid({ modalOpen, setModalOpen }: BlogGridProps) {
             <div className='middle-container'>
                 <div className='create-post'>
                     <div className='avatar'>1x1</div>
-                    <input className='post-input' placeholder="Care to share your thoughts?" readOnly></input>
+                    <input className='post-input' onClick={() => setPostModalOpen(true)} placeholder="Care to share your thoughts?" readOnly></input>
                     <button className='add-image-btn'>icon</button>
                 </div>
                 {/* Posts here */}
@@ -69,7 +69,7 @@ export function BlogGrid({ modalOpen, setModalOpen }: BlogGridProps) {
                         </article>
                     ))}
                 </div>
-                {postModalOpen && <PostModal/>}
+                {postModalOpen && <PostModal setPostModalOpen={setPostModalOpen}/>}
             </div>
             <div className='right-container'>
                 <div className='recent-articles'>
