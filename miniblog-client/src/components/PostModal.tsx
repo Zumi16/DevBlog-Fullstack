@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState, type Dispatch, type SetStateAction } from "react"
 import './PostModal.css'
 import { addPost } from "../services/postService";
+import { type Post } from './BlogGrid'
 
 interface PostModalProps {
     setPostModalOpen: Dispatch<SetStateAction<boolean>>
+    setPosts: React.Dispatch<React.SetStateAction<Post[]>>;
 }
 
-export function PostModal({ setPostModalOpen }: PostModalProps) {
+export function PostModal({ setPostModalOpen, setPosts}: PostModalProps) {
     const titleRef = useRef<HTMLInputElement>(null);
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
@@ -21,6 +23,7 @@ export function PostModal({ setPostModalOpen }: PostModalProps) {
         try {
             const response = await addPost({title, content})
 
+            setPosts((prevPosts) => [response, ...prevPosts])
             console.log(response)
         } catch (err) {
             if (err instanceof Error) {

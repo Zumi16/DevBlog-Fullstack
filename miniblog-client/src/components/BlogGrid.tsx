@@ -9,7 +9,7 @@ interface BlogGridProps {
     setModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-interface Post {
+export interface Post {
     id: string;
     title: string;
     content: string;
@@ -83,7 +83,7 @@ export function BlogGrid({ modalOpen, setModalOpen }: BlogGridProps) {
                         </article>
                     ))}
                 </div>
-                {postModalOpen && <PostModal setPostModalOpen={setPostModalOpen} />}
+                {postModalOpen && <PostModal setPostModalOpen={setPostModalOpen}  setPosts={setPosts} />}
             </div>
             <div className='right-container'>
                 <div className='recent-articles'>

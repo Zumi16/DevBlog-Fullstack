@@ -8,15 +8,16 @@
 
 /* middle container */
 .middle-container {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 24px;
     padding: 20px 10px;
     overflow: scroll;
-    overflow-x: hidden;
     align-items: center;
 }
 .create-post {
+    position: sticky;
     width: 100%;
     display: flex;
     background: #ffffff;
@@ -44,7 +45,12 @@
     padding: 5px 0;
 }
 
-.post-container { width: 100%; }
+.post-container { 
+    display: flex; 
+    flex-direction: column; 
+    width: 100%;
+    gap: 15px;
+}
 .article-container {
     display: flex;
     flex-direction: column;
