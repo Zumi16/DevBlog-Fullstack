@@ -19,6 +19,9 @@ interface Post {
 export function BlogGrid({ modalOpen, setModalOpen }: BlogGridProps) {
     const [posts, setPosts] = useState<Post[]>([]);
     const [postModalOpen, setPostModalOpen] = useState<boolean>(false)
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
+        return !!localStorage.getItem('token')
+    })
 
     const fetchPost = async () => {
         console.log('fetchPost called');
@@ -36,6 +39,12 @@ export function BlogGrid({ modalOpen, setModalOpen }: BlogGridProps) {
                 console.log(err.message)
             }
         }
+
+    }
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        setIsLoggedIn(false)
     }
 
     useEffect(() => {
@@ -49,11 +58,14 @@ export function BlogGrid({ modalOpen, setModalOpen }: BlogGridProps) {
             <div>
             </div>
             <div className='middle-container'>
-                <div className='create-post'>
-                    <div className='avatar'>1x1</div>
-                    <input className='post-input' onClick={() => setPostModalOpen(true)} placeholder="Care to share your thoughts?" readOnly></input>
-                    <button className='add-image-btn'>icon</button>
-                </div>
+                {isLoggedIn &&
+                    <div className='create-post'>
+                        <div className='avatar'>1x1</div>
+                        <input className='post-input' onClick={() => setPostModalOpen(true)} placeholder="Care to share your thoughts?" readOnly></input>
+                        <button className='add-image-btn'>icon</button>
+                        <button onClick={() => handleLogout()}>Logout</button>
+                    </div>
+                }
                 {/* Posts here */}
                 <div className='post-container'>
                     {posts.map((post) => (
@@ -69,7 +81,7 @@ export function BlogGrid({ modalOpen, setModalOpen }: BlogGridProps) {
                         </article>
                     ))}
                 </div>
-                {postModalOpen && <PostModal setPostModalOpen={setPostModalOpen}/>}
+                {postModalOpen && <PostModal setPostModalOpen={setPostModalOpen} />}
             </div>
             <div className='right-container'>
                 <div className='recent-articles'>
