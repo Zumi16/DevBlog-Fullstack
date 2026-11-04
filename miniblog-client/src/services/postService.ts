@@ -15,6 +15,10 @@ const API_BASE_URL = import.meta.env.VITE_API_URL
 //         return postData
 //     }
 // }
+interface postContent {
+    title: string,
+    content: string
+}
 
 export async function getPost() {
     const token = localStorage.getItem('token')
@@ -28,8 +32,18 @@ export async function getPost() {
     return postData
 }
 
-export async function addPost() {
-  return {
-    
-   }  // wla pa laman
+export async function addPost(postcontent: postContent) {
+    const token = localStorage.getItem('token')
+
+    const response = await fetch(`${API_BASE_URL}/posts`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `${token}`},
+        body: JSON.stringify({title: postcontent.title, content: postcontent.content})
+
+    })
+
+    const data = await response.json()
+
+    return data
+    // wla pa laman
 }

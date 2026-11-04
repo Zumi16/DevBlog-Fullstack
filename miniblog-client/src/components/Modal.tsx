@@ -15,8 +15,6 @@ export function Modal({ setModalOpen, onLoginSuccess }: ModalProps) {
     const [isLogin, setIsLogin] = useState<boolean>(false)
     const [error, setError] = useState('')
 
-    const token = localStorage.getItem('token')
-    console.log(token)
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
