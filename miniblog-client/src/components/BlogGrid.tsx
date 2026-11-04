@@ -42,6 +42,8 @@ export function BlogGrid({ modalOpen, setModalOpen }: BlogGridProps) {
 
     }
 
+    // **** LILIPAT SA HEADER WHEN LOGGED IN SHOW LOGOUT
+    // THEN SHOW SIGNUP/LOGIN WHEN LOGGED OUT ****
     const handleLogout = () => {
         localStorage.removeItem('token');
         setIsLoggedIn(false)
@@ -50,7 +52,7 @@ export function BlogGrid({ modalOpen, setModalOpen }: BlogGridProps) {
     useEffect(() => {
         // eslint-disable-next-line react-hooks/set-state-in-effect
         fetchPost();
-    }, [])
+    }, [isLoggedIn])
 
     console.log(posts)
     return (
@@ -93,7 +95,10 @@ export function BlogGrid({ modalOpen, setModalOpen }: BlogGridProps) {
             {modalOpen && (
                 <Modal
                     setModalOpen={setModalOpen}
-                    onLoginSuccess={fetchPost}
+                    onLoginSuccess={() => {
+                        setIsLoggedIn(true);
+                        fetchPost();
+                    }}
                 />
             )
             }

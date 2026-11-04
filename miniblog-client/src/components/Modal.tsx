@@ -25,10 +25,10 @@ export function Modal({ setModalOpen, onLoginSuccess }: ModalProps) {
                 const response = await loginUser({ username, password })
 
                 console.log('Registered Successfully', response)
-                setModalOpen(false)
 
                 if (response.token) {
                     localStorage.setItem('token', response.token)
+                    setModalOpen(false)
                 }
 
                 if (onLoginSuccess) {
