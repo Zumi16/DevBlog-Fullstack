@@ -1,0 +1,42 @@
+.post-modal-container {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 5px;
+    overflow: auto;
+    min-width: 500px;
+}
+.post-modal-container h2 {
+    text-align: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+
+.create-post-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 15px;
+    align-items: center;
+    gap: 15px;
+}
+.post-title {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    padding: 5px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.post-textarea {
+    width: 100%;
+    border: none;
+    resize: none;
+    outline: none;
+}
+
+.post-btn {
+    padding: 10px;
+    color: white;
+    background: #555555;
+}

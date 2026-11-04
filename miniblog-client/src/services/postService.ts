@@ -29,5 +29,7 @@ export async function getPost() {
 }
 
 export async function addPost() {
-  return { }  // wla pa laman
+  return {
+    
+   }  // wla pa laman
 }
