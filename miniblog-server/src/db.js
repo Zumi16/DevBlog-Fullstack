@@ -13,6 +13,7 @@ db.exec(`
     CREATE TABLE blog_post (
         id INTEGER PRIMARY KEY,
         user_id INTEGER,
+        title TEXT,
         content TEXT, 
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY(user_id) REFERENCES users(id)

@@ -14,11 +14,11 @@ router.get('/', (req, res) => {
 //  I used content instead of task since im making post instead of todo
 // But some values are still named after todos
 router.post('/', (req, res) => { 
-    const { content } = req.body
-    const insertTodo = db.prepare(`INSERT INTO blog_post (user_id, content) VALUES (?, ?)`)
-    const result = insertTodo.run(req.userId, content)
+    const { title, content } = req.body
+    const insertTodo = db.prepare(`INSERT INTO blog_post (user_id, title, content) VALUES (?, ?, ?)`)
+    const result = insertTodo.run(req.userId, title, content)
 
-    res.json({ id: result.lastId, content})
+    res.json({ id: result.lastId, title, content})
  })
 
 // Edit a post

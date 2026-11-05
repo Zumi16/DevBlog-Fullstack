@@ -54,7 +54,6 @@ export function BlogGrid({ modalOpen, setModalOpen }: BlogGridProps) {
         fetchPost();
     }, [isLoggedIn])
 
-    console.log(posts)
     return (
         <div className="blog-grid">
             <div>
@@ -77,6 +76,7 @@ export function BlogGrid({ modalOpen, setModalOpen }: BlogGridProps) {
                                 <p></p>
                             </div>
                             <div className='title-content'>
+                                <h2>{post.title}</h2>
                                 <p>{post.content}</p>
                                 <p>{post.created_at}</p>
                             </div>
@@ -87,9 +87,10 @@ export function BlogGrid({ modalOpen, setModalOpen }: BlogGridProps) {
             </div>
             <div className='right-container'>
                 <div className='recent-articles'>
-                    <h5>Article 1</h5>
-                    <h5>Article 2</h5>
-                    <h5>Article 3</h5>
+                    <h2>Recent Articles</h2>
+                    {posts.map((post) => (
+                        <p>{post.title}</p>
+                    ))}
                 </div>
             </div>
             {modalOpen && (

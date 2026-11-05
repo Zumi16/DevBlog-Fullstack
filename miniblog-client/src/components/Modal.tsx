@@ -50,7 +50,6 @@ export function Modal({ setModalOpen, onLoginSuccess }: ModalProps) {
                     localStorage.setItem('token', response.token)
                 }
 
-                console.log('About to refresh posts');
                 if (onLoginSuccess) {
                     onLoginSuccess();
                 }

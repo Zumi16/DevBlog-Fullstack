@@ -24,7 +24,6 @@ export function PostModal({ setPostModalOpen, setPosts}: PostModalProps) {
             const response = await addPost({title, content})
 
             setPosts((prevPosts) => [response, ...prevPosts])
-            console.log(response)
         } catch (err) {
             if (err instanceof Error) {
                 console.log(err.message)

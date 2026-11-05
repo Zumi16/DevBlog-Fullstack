@@ -19,11 +19,12 @@ router.post('/register', (req, res) => {
         const result = insertUser.run(username, hashedPassword)
 
         // default 'welcome' post
-        const defaultPost = `Welcome!, Add your first post :)`
-        const insertPost = db.prepare(`INSERT INTO blog_post (user_id, content)
-        VALUES (?, ?)`)
+        const defaultPostTitle =  `Hello! Welcome!`
+        const defaultPostContent = `Please add your first post :)`
+        const insertPost = db.prepare(`INSERT INTO blog_post (user_id, title, content)
+        VALUES (?, ?, ?)`)
 
-        insertPost.run(result.lastInsertRowid, defaultPost)
+        insertPost.run(result.lastInsertRowid, defaultPostTitle, defaultPostContent)
 
         // creating a token
         const token = jwt.sign({ id: result.lastInsertRowid }, 
