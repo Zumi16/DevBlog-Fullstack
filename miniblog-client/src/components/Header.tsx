@@ -1,10 +1,18 @@
+import type { SetStateAction, Dispatch } from 'react';
 import './Header.css'
 
 interface HeaderProps {
-    setModalOpen: (open: boolean) => void
+    isLoggedIn: boolean;
+    setIsLoggedIn: Dispatch<SetStateAction<boolean>>;
+    setModalOpen: (open: boolean) => void;
 }
 
-export function Header({setModalOpen}: HeaderProps) {
+export function Header({ isLoggedIn, setIsLoggedIn, setModalOpen }: HeaderProps) {
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        setIsLoggedIn(false)
+    }
+
     return (
         <div className='header-container'>
             <div className="left-section">
@@ -12,7 +20,12 @@ export function Header({setModalOpen}: HeaderProps) {
             </div>
             <div className="right-section">
                 <button className='feed-btn'>Feed</button>
-                <button className='sign-up-btn' onClick={() => setModalOpen(true)}>Sign Up</button>
+                {isLoggedIn
+                    ?
+                    <button className='sign-up-btn' onClick={() => handleLogout()}>Logout</button>
+                    :
+                    <button className='sign-up-btn' onClick={() => setModalOpen(true)}>Sign Up</button>
+                }
             </div>
         </div>
     )

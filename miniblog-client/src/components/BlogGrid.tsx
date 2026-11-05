@@ -5,6 +5,8 @@ import { getPost } from '../services/postService.ts' // Match the service filena
 import { PostModal } from './PostModal.tsx'
 
 interface BlogGridProps {
+    isLoggedIn: boolean;
+    setIsLoggedIn: Dispatch<SetStateAction<boolean>>;
     modalOpen: boolean;
     setModalOpen: Dispatch<SetStateAction<boolean>>;
 }
@@ -16,12 +18,10 @@ export interface Post {
     created_at?: string;
 }
 
-export function BlogGrid({ modalOpen, setModalOpen }: BlogGridProps) {
+export function BlogGrid({ isLoggedIn, setIsLoggedIn, modalOpen, setModalOpen}: BlogGridProps) {
     const [posts, setPosts] = useState<Post[]>([]);
     const [postModalOpen, setPostModalOpen] = useState<boolean>(false)
-    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
-        return !!localStorage.getItem('token')
-    })
+
 
     const fetchPost = async () => {
         console.log('fetchPost called');
@@ -44,10 +44,6 @@ export function BlogGrid({ modalOpen, setModalOpen }: BlogGridProps) {
 
     // **** LILIPAT SA HEADER WHEN LOGGED IN SHOW LOGOUT
     // THEN SHOW SIGNUP/LOGIN WHEN LOGGED OUT ****
-    const handleLogout = () => {
-        localStorage.removeItem('token');
-        setIsLoggedIn(false)
-    }
 
     useEffect(() => {
         // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -64,7 +60,6 @@ export function BlogGrid({ modalOpen, setModalOpen }: BlogGridProps) {
                         <div className='avatar'>1x1</div>
                         <input className='post-input' onClick={() => setPostModalOpen(true)} placeholder="Care to share your thoughts?" readOnly></input>
                         <button className='add-image-btn'>icon</button>
-                        <button onClick={() => handleLogout()}>Logout</button>
                     </div>
                 }
                 {/* Posts here */}
