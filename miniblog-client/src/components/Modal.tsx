@@ -1,5 +1,5 @@
 import type { Dispatch, SetStateAction } from 'react';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './Modal.css';
 import { registerUser, loginUser } from '../services/authService.ts'
 
@@ -14,6 +14,7 @@ export function Modal({ setModalOpen, onLoginSuccess }: ModalProps) {
     const [password, setPassword] = useState('')
     const [isLogin, setIsLogin] = useState<boolean>(false)
     const [error, setError] = useState('')
+
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -63,6 +64,12 @@ export function Modal({ setModalOpen, onLoginSuccess }: ModalProps) {
         }
 
     }
+
+    useEffect(() => {
+        const timer = setTimeout(() => setError(''), 3000);
+        return () => clearTimeout(timer);
+    }, [error])
+
     return (
         <div className="modal-overlay" onClick={() => (setModalOpen(false), setIsLogin(false))}>
             <div className="modal-container" onClick={(e) => e.stopPropagation()}>
@@ -83,6 +90,7 @@ export function Modal({ setModalOpen, onLoginSuccess }: ModalProps) {
                         </div>
                         <button onClick={handleSubmit}>Login</button>
                         <button onClick={() => setIsLogin(false)}>Create an account?</button>
+                        {error && <p style={{color: "red"}}>{error}</p>}
                     </div>
                     :
                     <div className='signup-container'>
